@@ -2,6 +2,7 @@ package com.codinginflow.weatherapp.di
 
 import android.app.Application
 import com.codinginflow.weatherapp.data.remote.WeatherApi
+import com.codinginflow.weatherapp.domain.util.Constants.Companion.BASE_URL
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import dagger.Module
@@ -21,7 +22,7 @@ object AppModule {
     @Singleton
     fun provideWeatherApi(): WeatherApi {
         return Retrofit.Builder()
-            .baseUrl("https://api.open-meteo.com/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create()
